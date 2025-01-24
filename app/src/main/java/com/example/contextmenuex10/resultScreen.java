@@ -18,6 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 
+/**
+ * Calculates a series and displays it in a list view
+ */
 public class resultScreen extends AppCompatActivity {
 
     ListView lv1;
@@ -25,6 +28,12 @@ public class resultScreen extends AppCompatActivity {
     boolean type;
     ArrayList<Long> series;
     int q, frstNum;
+
+    /**
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +52,13 @@ public class resultScreen extends AppCompatActivity {
         registerForContextMenu(lv1);
     }
 
+    /**
+     * @param menu     The context menu that is being built
+     * @param v        The view for which the context menu is being built
+     * @param menuInfo Extra information about the item for which the
+     *                 context menu should be shown. This information will vary
+     *                 depending on the class of v.
+     */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -51,6 +67,10 @@ public class resultScreen extends AppCompatActivity {
         menu.add("Get sum until index");
     }
 
+    /**
+     * @param item The context menu item that was selected.
+     * @return True if the item was handled, false otherwise.
+     */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -69,6 +89,9 @@ public class resultScreen extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    /**
+     *  Generates a series and displays it in a list view
+     */
     public void generateSeriesLV() {
         series = new ArrayList<>(); // Use ArrayList<Long>
         if (type) // Geometric series
@@ -93,6 +116,11 @@ public class resultScreen extends AppCompatActivity {
         lv1.setAdapter(adapter);
     }
 
+    /**
+     * @param index The index of the series
+     * @param series The series
+     * @return The sum of the series up to the index
+     */
     public long calculateSum(int index, ArrayList<Long> series) {
         long sum = 0;
         if (type)
@@ -109,6 +137,9 @@ public class resultScreen extends AppCompatActivity {
         return sum;
     }
 
+    /**
+     * @param view The view that was clicked.
+     */
     public void Back(View view) {
         finish();
     }
