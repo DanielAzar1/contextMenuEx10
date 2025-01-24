@@ -64,7 +64,7 @@ public class resultScreen extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.setHeaderTitle("Series Operations");
         menu.add("Get index");
-        menu.add("Get sum until index");
+        menu.add("Get sum until this index");
     }
 
     /**
